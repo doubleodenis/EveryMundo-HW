@@ -1,0 +1,28 @@
+
+  //For api requesting
+  state = {
+    flights: []
+  }
+  
+  //Fetch flights
+  fetchData()
+      get('apiURL') //use axios package
+      .then(result => 
+        setState(
+          flights: result
+        )
+    
+  
+  
+  //For displaying data
+  displayCards()
+    flights.map((element, index) =>
+        <Card>
+            element.title
+            element.img
+            element.price
+            ...
+        </Card>
+      )
+      
+  
