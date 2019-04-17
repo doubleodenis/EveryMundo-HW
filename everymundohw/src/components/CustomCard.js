@@ -4,6 +4,14 @@ import React from 'react'
 import {Card, Button} from '@material-ui/core/';
 import '../styling/CustomCard.css'
 
+function translateCity(city)
+{
+    const dictionary = {'LAS': 'Las Vegas', 'MIA': 'Miami', 'DTW': 'Detroit', 'MCO': 'Orlando',
+     'FLL': 'Fort Lauderdale', 'RSW': 'Southwest Florida', 'PHL': 'Philadelphia', 'LGA': 'Queens'}
+
+    return dictionary[city];
+}
+
 const CustomCard = (props) =>
 {
     var type = '-';
@@ -11,7 +19,9 @@ const CustomCard = (props) =>
         type = 'One Way'
     else if (props.tripType == 'roundTrip')
         type = 'Round Trip'
-
+    
+    const origin = translateCity(props.origin)
+    const dest = translateCity(props.destination)
     return (
         <Card 
         className="custom-card"
@@ -29,8 +39,8 @@ const CustomCard = (props) =>
                 
                 <img src={props.routeCoverImage} alt="No Image" height="125" width="200"/>
                 <div style={{padding:5}}>
-                    <p style={{margin: 0, fontSize: 16}}>(_________) to</p>
-                    <p style={{margin:0, fontSize: 20}}>(_________)</p>
+                    <p style={{margin: 0, fontSize: 16}}>{origin} to</p>
+                    <p style={{margin:0, fontSize: 20}}>{dest}</p>
                     <p style={{margin:0, fontSize: 16}}>{props.departureDate} - {props.returnDate}</p>
                 </div>
 
@@ -40,7 +50,8 @@ const CustomCard = (props) =>
                         className="footer-button"
                         variant="contained"
                         size="small"
-                        color="primary">
+                        color="primary"
+                        onClick={props.submit}>
                             View Deal
                         </Button>
                     </div>

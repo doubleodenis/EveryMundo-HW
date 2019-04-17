@@ -2,13 +2,17 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import CustomCard from './components/CustomCard'
 import Navbar from './components/CustomNavbar'
+import PopupForm from './components/PopupForm';
+
+
 class MainPage extends Component
 {
     constructor(props)
     {
         super(props);
         this.state = {
-            flights: []
+            flights: [],
+            showForm: false
         }
     }
 
@@ -23,6 +27,18 @@ class MainPage extends Component
             })
     }
 
+    handleOpen = () => 
+    {
+        this.setState({ showForm: true });
+        //console.log('handle open')
+    };
+    
+    handleClose = () =>
+    {
+        this.setState({ showForm: false });
+    };
+    
+
     createCards = (routes) =>
     {
         const cards = routes.map((elem, index) =>
@@ -35,6 +51,7 @@ class MainPage extends Component
             routeCoverImage = {elem.routeCoverImage}
             fareClass = {elem.fareClass}
             priceUSD = {elem.priceUSD}
+            submit = {this.handleOpen}
             />
         )
 
@@ -44,6 +61,7 @@ class MainPage extends Component
             </div>
         )
     }
+   
     componentWillMount()
     {
         this.fetchFlightRoutes();
@@ -53,9 +71,16 @@ class MainPage extends Component
         return(
             <div>
                 <Navbar/>
-                
-                {this.createCards(this.state.flights)}
-                
+                <div>
+                    <h3>Popular Routes</h3>
+                    {this.createCards(this.state.flights)}
+                    <div style={{verticalAlign: 'middle'}}>
+                        <PopupForm 
+                        open={this.state.showForm}
+                        onClose={this.handleClose}/>
+                    </div>
+                    
+                </div>
             </div>
         )
     }
