@@ -1,9 +1,9 @@
 import React from 'react'
-import {Card, Button} from '@blueprintjs/core'
-import { ELEVATION_1 } from '@blueprintjs/core/lib/esm/common/classes';
-//@import "~normalize.css";
-//@import "~@blueprintjs/core/lib/css/blueprint.css";
-//@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+//import {Card, Button, H5, H4, H3} from '@blueprintjs/core'
+//import {ELEVATION_3 } from '@blueprintjs/core/lib/esm/common/classes';
+import {Card, Button} from '@material-ui/core/';
+import '../styling/CustomCard.css'
+
 const CustomCard = (props) =>
 {
     var type = '-';
@@ -13,13 +13,46 @@ const CustomCard = (props) =>
         type = 'Round Trip'
 
     return (
-        <Card interactive={true} elevation={ELEVATION_1}>
-            <h5>{props.origin}-{props.destination}</h5>
-            <h4>{type}</h4>
-            <img src={props.routeCoverImage} alt="No Image" height="100" width="100"/>
-            <p>{props.departureDate}-{props.returnDate}</p>
-               {props.fareClass} {props.priceUSD}
-            <Button>View Deal</Button>
+        <Card 
+        className="custom-card"
+        style={{backgroundColor: '#fafafa'}}
+        //classes={elevation4}
+        >
+            {/*Header of the Card*/}
+            <div className="header-block">
+                <h4 className="card-header"> {props.origin}-{props.destination}</h4>
+                <h6 className="card-header"> {props.fareClass}</h6>
+            </div>
+            
+             {/*Body of the card */} 
+            <div className="card-body">
+                
+                <img src={props.routeCoverImage} alt="No Image" height="125" width="200"/>
+                <div style={{padding:5}}>
+                    <p style={{margin: 0, fontSize: 16}}>(_________) to</p>
+                    <p style={{margin:0, fontSize: 20}}>(_________)</p>
+                    <p style={{margin:0, fontSize: 16}}>{props.departureDate} - {props.returnDate}</p>
+                </div>
+
+                <div className="card-footer">
+                    <div className="button-div">
+                        <Button
+                        className="footer-button"
+                        variant="contained"
+                        size="small"
+                        color="primary">
+                            View Deal
+                        </Button>
+                    </div>
+                   
+                    <div className="fare-div">
+                        <p style={{margin: 0, fontSize: 16}}>Fares from</p>
+                        <h4 style={{margin: 0}}>${props.priceUSD}</h4>
+                        <p style={{margin:0, fontSize: 16}}>{type}</p>
+                    </div>
+                </div>
+            </div>
+           
         </Card>
 
     )

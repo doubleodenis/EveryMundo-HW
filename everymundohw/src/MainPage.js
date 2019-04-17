@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import CustomCard from './components/CustomCard'
-
+import Navbar from './components/CustomNavbar'
 class MainPage extends Component
 {
     constructor(props)
@@ -44,7 +44,7 @@ class MainPage extends Component
             </div>
         )
     }
-    componentDidMount()
+    componentWillMount()
     {
         this.fetchFlightRoutes();
     }
@@ -52,7 +52,10 @@ class MainPage extends Component
     {
         return(
             <div>
+                <Navbar/>
+                
                 {this.createCards(this.state.flights)}
+                
             </div>
         )
     }
