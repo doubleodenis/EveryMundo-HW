@@ -3,7 +3,7 @@ import axios from 'axios'
 import CustomCard from './components/CustomCard'
 import Navbar from './components/CustomNavbar'
 import PopupForm from './components/PopupForm';
-
+import './styling/Main.css'
 
 class MainPage extends Component
 {
@@ -69,11 +69,13 @@ class MainPage extends Component
     render()
     {
         return(
-            <div>
-                <Navbar/>
-                <div>
-                    <h3>Popular Routes</h3>
+            <div className="main-div">
+                <div className="cards-block" style={{}}>
+
+                    <h2 className="popular-routes-header">Popular Routes</h2>
+
                     {this.createCards(this.state.flights)}
+
                     <div style={{verticalAlign: 'middle'}}>
                         <PopupForm 
                         open={this.state.showForm}

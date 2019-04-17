@@ -36,8 +36,14 @@ const CustomCard = (props) =>
             
              {/*Body of the card */} 
             <div className="card-body">
+                <div style={{textAlign: 'center'}}>
+                    <img 
+                        src={props.routeCoverImage} 
+                        alt="No Image" 
+                        height="125" 
+                        width="200"/>
+                </div>
                 
-                <img src={props.routeCoverImage} alt="No Image" height="125" width="200"/>
                 <div style={{padding:5}}>
                     <p style={{margin: 0, fontSize: 16}}>{origin} to</p>
                     <p style={{margin:0, fontSize: 20}}>{dest}</p>
