@@ -1,6 +1,5 @@
 import React from 'react'
-//import {Navbar, Button, Alignment} from '@blueprintjs/core'
-import {AppBar, Toolbar, Typography, Button} from '@material-ui/core'
+import {AppBar, Toolbar, Typography} from '@material-ui/core'
 const CustomNavbar = () =>
 {
     return (

@@ -15,9 +15,9 @@ function translateCity(city)
 const CustomCard = (props) =>
 {
     var type = '-';
-    if (props.tripType == 'oneWay')
+    if (props.tripType === 'oneWay')
         type = 'One Way'
-    else if (props.tripType == 'roundTrip')
+    else if (props.tripType === 'roundTrip')
         type = 'Round Trip'
     
     const origin = translateCity(props.origin)
@@ -39,7 +39,7 @@ const CustomCard = (props) =>
                 <div style={{textAlign: 'center'}}>
                     <img 
                         src={props.routeCoverImage} 
-                        alt="No Image" 
+                        alt="No display" 
                         height="125" 
                         width="200"/>
                 </div>

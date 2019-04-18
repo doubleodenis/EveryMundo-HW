@@ -1,7 +1,7 @@
 import React from 'react';
-import {Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button} from '@material-ui/core/';
+import {Dialog, DialogTitle, DialogContent, Typography} from '@material-ui/core/';
 import '../styling/PopupForm.css'
-
+import FlightForm from './FlightForm'
 const PopupForm = (props) =>
 {
 
@@ -10,27 +10,20 @@ const PopupForm = (props) =>
         aria-labelledby="flight-form"
         aria-describedby="show-flight-route-info"
         open={props.open}
-        onClose={props.close}
+        onClose={props.onClose}
+        maxWidth="md"
+        //fullWidth={true}
         align="center"
         className="centered"
         >
-          <DialogTitle id="customized-dialog-title" onClose={props.onClose}>
-            Modal title
-          </DialogTitle>
           <DialogContent>
-            <Typography gutterBottom>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-              facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum
-              at eros.
-            </Typography>
-            
+            <FlightForm 
+            flight={props.flight}
+            onClose={props.onClose}
+            />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={props.onClose} color="primary">
-              Save changes
-            </Button>
-          </DialogActions>
         </Dialog>
+          
 
     )
 }

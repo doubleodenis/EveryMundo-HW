@@ -7,6 +7,7 @@ const Routes = () =>
     return (
         <div>
             <Route exact path='/' component={MainPage}/>
+            <Route exact path='/search' />
         </div>
     )
 };

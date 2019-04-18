@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import CustomCard from './components/CustomCard'
-import Navbar from './components/CustomNavbar'
 import PopupForm from './components/PopupForm';
 import './styling/Main.css'
 
@@ -12,7 +11,8 @@ class MainPage extends Component
         super(props);
         this.state = {
             flights: [],
-            showForm: false
+            showForm: false,
+            selectedFlight: {}
         }
     }
 
@@ -26,17 +26,21 @@ class MainPage extends Component
                 })
             })
     }
-
-    handleOpen = () => 
-    {
-        this.setState({ showForm: true });
-        //console.log('handle open')
-    };
     
+    handleOpen = (e, index) => 
+    {
+        
+        this.setState({ 
+            showForm: true,
+            selectedFlight: this.state.flights[index]
+        });
+    };
+
     handleClose = () =>
     {
         this.setState({ showForm: false });
     };
+    
     
 
     createCards = (routes) =>
@@ -51,7 +55,7 @@ class MainPage extends Component
             routeCoverImage = {elem.routeCoverImage}
             fareClass = {elem.fareClass}
             priceUSD = {elem.priceUSD}
-            submit = {this.handleOpen}
+            submit = {e => {this.handleOpen(e, index)}}
             />
         )
 
@@ -70,16 +74,21 @@ class MainPage extends Component
     {
         return(
             <div className="main-div">
-                <div className="cards-block" style={{}}>
+                <div className="cards-block">
 
                     <h2 className="popular-routes-header">Popular Routes</h2>
 
                     {this.createCards(this.state.flights)}
 
-                    <div style={{verticalAlign: 'middle'}}>
+                    <div 
+                    //style={{verticalAlign: 'middle'}}
+                    >
+                    
                         <PopupForm 
                         open={this.state.showForm}
-                        onClose={this.handleClose}/>
+                        onClose={this.handleClose}
+                        flight={this.state.selectedFlight}
+                        /> 
                     </div>
                     
                 </div>
