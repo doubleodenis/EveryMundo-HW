@@ -73,16 +73,14 @@ class MainPage extends Component
     render()
     {
         return(
-            <div className="main-div">
+            <div className="">
                 <div className="cards-block">
 
                     <h2 className="popular-routes-header">Popular Routes</h2>
 
                     {this.createCards(this.state.flights)}
 
-                    <div 
-                    //style={{verticalAlign: 'middle'}}
-                    >
+                    <div>
                     
                         <PopupForm 
                         open={this.state.showForm}

@@ -11,7 +11,9 @@ class App extends Component
       <div className="App">
           <BrowserRouter>
             <Navbar/>
-            <Routes/>
+            <div style={{margin: 50, marginLeft: 100, marginRight: 100,}}>
+              <Routes />
+            </div>
           </BrowserRouter>
       </div>
     );

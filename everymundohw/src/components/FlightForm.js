@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {TextField, RadioGroup, Radio, FormControl, InputLabel, Button,
-     FormControlLabel, Select, MenuItem, Input, FilledInput, Grid} from '@material-ui/core'
+import {Redirect} from 'react-router'
+import {TextField, Radio, Button, FormControlLabel, Grid} from '@material-ui/core'
 import Axios from 'axios';
 
 
@@ -21,7 +21,10 @@ class FlightForm extends Component
             returnDate: this.formatDate(props.flight.returnDate),
 
             promoCode: '',
-            passengers: 1
+            passengers: 1,
+
+            navigate: false,
+            data: {}
         }
     }
 
@@ -98,6 +101,13 @@ class FlightForm extends Component
                 .then(res =>
                 {
                     console.log(res.data);
+                    this.setState({
+                        navigate: true,
+                        data: res.data
+                        }, () => {
+                        this.render()
+                        })
+
                 })
             }
             else if(this.state.promoCode) //no return date and there is a promo code
@@ -115,6 +125,14 @@ class FlightForm extends Component
                 .then(res =>
                 {
                     console.log(res.data);
+                
+
+                this.setState({
+                    navigate: true,
+                    data: res.data
+                    }, () => {
+                    this.render()
+                    })
                 })
             }
             else //no return and no promo code
@@ -132,7 +150,14 @@ class FlightForm extends Component
                 })
                 .then(res =>
                 {
-                    console.log(res.data);
+                    //console.log(res.data);
+                    this.setState({
+                        navigate: true,
+                        data: res.data
+                        }, () => {
+                        this.render()
+                        })
+
                 })
             }
         }
@@ -141,6 +166,7 @@ class FlightForm extends Component
    
     render()
     {
+        //console.log(this.state.data)
         return(
  
         <form>
@@ -269,10 +295,14 @@ class FlightForm extends Component
                     <Button 
                     onClick={(e) => {this.submitForm(e)}} 
                     color="primary">
-                        Choose Flight
+                        Search Flights
                     </Button>
                 </Grid>
             </Grid>
+            
+            {this.state.navigate ?  <Redirect to={{
+                pathname: '/search', 
+            state: { data: this.state.data }}} push/> : ''}
         </form>
 
         )

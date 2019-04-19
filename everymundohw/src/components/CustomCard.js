@@ -26,7 +26,6 @@ const CustomCard = (props) =>
         <Card 
         className="custom-card"
         style={{backgroundColor: '#fafafa'}}
-        //classes={elevation4}
         >
             {/*Header of the Card*/}
             <div className="header-block">
