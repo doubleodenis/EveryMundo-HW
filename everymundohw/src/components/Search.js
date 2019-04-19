@@ -35,13 +35,8 @@ class Search extends Component
         }
     }
 
-    handleSelect = (flight, flightNum) =>
-    {
-        const name = flightNum === '1' ? 'selectedFlight1' : 'selectedFlight2'
-        this.setState({
-            [name]: flight 
-        })
-    }
+
+    /*Checks the selected radio and selects the route based off the radio selected. */
     handleRadio = (flightNum, index) =>
     {
         
@@ -66,11 +61,14 @@ class Search extends Component
         }
     }
 
+    /*Go back to the main flights page. */
     goBack = (e) =>
     {
         e.preventDefault();
         window.location.href = "/";
     }
+
+    /*Displays all the information for the departing flights. */
     displayOriginFlight()
     {
         const list = this.state.routes1.map((elem, index) =>
@@ -118,7 +116,7 @@ class Search extends Component
         return list
     
     }
-
+    /*Displays a list of all the returning flights. */
     displayReturningFlight = () =>
     {
         const list = this.state.routes2.map((elem, index) =>
@@ -206,7 +204,7 @@ class Search extends Component
                 style={{margin:15}}
                 className="choose-flight"
                 variant="contained"
-                size="small"
+                size="medium"
                 color="primary"
                 onClick={e => {this.chooseFlight(e)}}
                 >
@@ -217,7 +215,7 @@ class Search extends Component
                 style={{margin: 15}}
                 className="choose-flight"
                 variant="contained"
-                size="small"
+                size="medium"
                 color="default"
                 onClick={e => {this.goBack(e)}}
                 >

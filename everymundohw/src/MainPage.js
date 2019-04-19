@@ -16,7 +16,8 @@ class MainPage extends Component
             selectedFlight: {}
         }
     }
-
+    
+    /*Fetches the data from the API and saves it to the state. */
     fetchFlightRoutes = () => 
     {
         axios.get('https://everymundointernship.herokuapp.com/popularRoutes/UT77OX32RM70')
@@ -27,7 +28,8 @@ class MainPage extends Component
                 })
             })
     }
-    
+
+    /*Opens the popup form */
     handleOpen = (e, index) => 
     {
         
@@ -37,13 +39,15 @@ class MainPage extends Component
         });
     };
 
+    /*Closes the popup form*/
     handleClose = () =>
     {
         this.setState({ showForm: false });
     };
     
     
-
+    /*Dynamically creates a list of cards after requesting information from
+    the API. */
     createCards = (routes) =>
     {
         const cards = routes.map((elem, index) =>
