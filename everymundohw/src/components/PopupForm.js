@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dialog, DialogTitle, DialogContent, Typography} from '@material-ui/core/';
+import {Dialog, DialogContent} from '@material-ui/core/';
 import '../styling/PopupForm.css'
 import FlightForm from './FlightForm'
 const PopupForm = (props) =>

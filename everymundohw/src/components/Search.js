@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {List, ListItem, Divider, Radio, FormControlLabel,
+import {ListItem, Divider, Radio, FormControlLabel,
     Card, Button, Typography, Grid,} from '@material-ui/core'
 import '../styling/Search.css'
 
@@ -181,7 +181,7 @@ class Search extends Component
                     Search Results
                 </Typography>
                 <Typography gutterBottom variant="h4" style={{fontFamily: "segoe ui,serif,helvetica"}}>
-                    Departing Flight
+                    Departing Flight {this.state.flight1.departureDate}
                 </Typography>
                 <Typography gutterBottom variant="h5" style={{fontFamily: "segoe ui,serif,helvetica"}}>
                     {this.state.flight1.origin} - {this.state.flight1.destination}
@@ -192,7 +192,7 @@ class Search extends Component
                 <div>
                     <Divider/>
                     <Typography gutterBottom variant="h4" style={{fontFamily: "segoe ui,serif,helvetica"}}>
-                        Returning Flight
+                        Returning Flight {this.state.flight2.departureDate}
                     </Typography>
                     <Typography gutterBottom variant="h5" style={{fontFamily: "segoe ui,serif,helvetica"}}>
                         {this.state.flight2.origin} - {this.state.flight2.destination}

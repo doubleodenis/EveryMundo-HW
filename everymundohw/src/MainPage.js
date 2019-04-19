@@ -3,6 +3,7 @@ import axios from 'axios'
 import CustomCard from './components/CustomCard'
 import PopupForm from './components/PopupForm';
 import './styling/Main.css'
+import { Typography } from '@material-ui/core';
 
 class MainPage extends Component
 {
@@ -76,7 +77,13 @@ class MainPage extends Component
             <div className="">
                 <div className="cards-block">
 
-                    <h2 className="popular-routes-header">Popular Routes</h2>
+                    <Typography
+                    className="popular-routes-header"
+                    variant="h5"
+                    color="primary"
+                    style={{fontFamily: 'segoe ui, serif, helvetica'}} >
+                        <b>Popular Routes</b>
+                    </Typography>
 
                     {this.createCards(this.state.flights)}
 
